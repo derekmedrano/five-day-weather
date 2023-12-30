@@ -13,12 +13,13 @@ $(searchBtn.on('click', function(event) {
 }));
 
 function getGeo(city) {
-    var geoURL = "api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey
+    var geoURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey
 
-        // fetch(geoURL)
-        // .then(function (response) {
-        //     return response.json();
-        //   })
-        //   .then(function (data) {
-        //     console.log(data)
-})};
+    fetch(geoURL)
+        .then(function (response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(data)
+    });
+};
