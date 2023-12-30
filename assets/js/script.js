@@ -1,18 +1,13 @@
-var APIKey = "e87c58f5514b8732b0b47d1ae49b49a36";
-// var url = "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={APIKey}"
+var apiKey = "51d4821afd708744cf080bebb2d5390a";
 
-var cityName = $('#city-name');
+var cityInput = $('#city');
 var searchBtn = $('#search-button');
 
-searchBtn.on('click', function(event) {
-    preventDefault(event);
-    var cityNameInput = cityName.value;
+$(searchBtn.on('click', function(event) {
+    event.preventDefault();
 
-    // if (cityNameInput !=== )
+    var cityInputValue = cityInput.val();
+    console.log(cityInputValue)
+    //run function that inputs city into fetch
 
-
-})
-
-var getGeo = function(city) {
-
-}
+}));
