@@ -6,8 +6,19 @@ var searchBtn = $('#search-button');
 $(searchBtn.on('click', function(event) {
     event.preventDefault();
 
-    var cityInputValue = cityInput.val();
-    console.log(cityInputValue)
-    //run function that inputs city into fetch
+    var cityInputVal = cityInput.val();
+    console.log(cityInputVal)
+    getGeo(cityInputVal);
 
 }));
+
+function getGeo(city) {
+    var geoURL = "api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey
+
+        // fetch(geoURL)
+        // .then(function (response) {
+        //     return response.json();
+        //   })
+        //   .then(function (data) {
+        //     console.log(data)
+})};
