@@ -2,14 +2,15 @@ var apiKey = 'eee1f9e12d707b9e8ff0fa060b7d7705';
 var countryCode = 'US';
 
 var cityInput = $('#city');
+var cityName = cityInput.val();
 var searchBtn = $('#search-button');
-var cityInputVal = cityInput.val();
+
 
 $(searchBtn.on('click', function(event) {
     event.preventDefault();
 
-    console.log(cityInputVal)
-    getGeo(cityInputVal);
+    console.log(cityName)
+    getGeo(cityName);
 
 }));
 
@@ -23,9 +24,10 @@ function getGeo(city) {
         return response.json();
     })
     .then(function(data) {
-        var lat = data[0].lat;
-        var lon = data[0].lon;
-        console.log('latitude=' + lat + 'longitude=' + lon);
+        console.log(data);
+        // var lat = data.list[0].coord.lat;
+        // var lon = data.list[0].coord.lon;
+        // console.log('latitude=' + lat + 'longitude=' + lon);
     });
 }; 
 
