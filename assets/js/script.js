@@ -14,10 +14,10 @@ $(searchBtn.on('click', function(event) {
 
 }));
 
-// func() to check storage and add any previous searches as buttons to the aside
+// ADD func() to check storage and add any previous searches as buttons to the aside
 
 function getGeo(city) {
-    var geoURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + ',' +countryCode + '&limit=5&appid=' + apiKey
+    var geoURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + ',' + countryCode + '&limit=5&appid=' + apiKey
     console.log(city);
     fetch(geoURL)
         .then(function (response) {
@@ -31,8 +31,9 @@ function getGeo(city) {
     });
 }; 
 
-// func() to get current weather using getGeo()
+// ADD func() to get current weather using getGeo()
     //add appropriate icons
-//func() to get 5 day weather forecast using getGeo()
 
-//func() to store it in local storage
+// ADD func() to get 5 day weather forecast using getGeo()
+
+// ADD func() to store it in local storage
