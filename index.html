@@ -34,27 +34,32 @@
             </aside>
             <div class="col-sm-9">
                 <div class="row border">
-                    <h3 class="col-sm-6">Current weather:</h3>
+                    <h3 id="city-name" class="col-sm-6"></h3>
                     <p id="temp"></p>
                     <p id="humidity"></p>
                     <p id="wind"></p>
                 </div>
                 <div class="row border">
                     <h3 class="col-sm-6">5-Day Forecast!</h3>
+                    <div id="five-day"></div>
                 </div>
             </div>
         </main>
     </div>
 
 
-
+    
 
     <!-- link to JQuery API -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+    
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
 
     <!-- Link to custom js -->
     <script type="text/javascript" src="./assets/js/script.js"></script>
+
+
 
 
 </body>
