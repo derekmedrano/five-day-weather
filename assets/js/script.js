@@ -23,7 +23,9 @@ function storeSearch (cityName) {
     }
 }
 
-// ADD func() to check storage and add any previous searches as buttons to the aside
+function getSearch(cityName) {
+    
+}
 
 function getGeo(city) {
     var geoURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + ',' + countryCode + '&limit=5&appid=' + apiKey
@@ -42,8 +44,11 @@ function getGeo(city) {
 
 function currentWeather(currentDay) {
     var cityName = cityInput.val();
+    var kTemp = currentDay.main.temp
+    var fTemp = Math.round((kTemp - 273.15) * 9/5 + 32)
+
     $('#city-name').text(cityName);
-    $('#temp').text('Tempurature:' + currentDay.main.temp);
+    $('#temp').text('Tempurature:' + fTemp);
     $('#humidity').text('Humidity:' + currentDay.main.humidity);
     $('#wind').text('Wind:' + currentDay.wind.speed);
 
@@ -57,9 +62,13 @@ function fiveDay(list) {
     var temp = $('<p></p>');
     var humidity = $('<p></p>');
     var wind = $('<p></p>');
+
+    var kTemp = day.main.temp
+    var fTemp = Math.round((kTemp - 273.15) * 9/5 + 32);
+    
     
     date.text(dayjs.unix(day.dt).format("MM-DD-YYYY"));
-    temp.text(day.main.temp);
+    temp.text(fTemp);
     humidity.text(day.main.humidity);
     wind.text(day.wind.speed);
     $(card).append(date);
@@ -73,5 +82,3 @@ function fiveDay(list) {
     $('#five-day').append(card);
  }
 }
-
-
