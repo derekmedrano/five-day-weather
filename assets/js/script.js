@@ -5,6 +5,7 @@ var cityInput = $('#city');
 var searchBtn = $('#search-button');
 var invalidMsg = $('#no-input-msg');
 var delHistoryBtn = $('#del-history');
+var iconEl = $('#w-icon');
 
 function invalidMsgFunc() {
     var invalidMsgTxt = $('<p></p>')
@@ -17,10 +18,12 @@ $(searchBtn.on('click', function(event) {
     event.preventDefault();
     var cityName = cityInput.val();
     if (cityName !== ('')) {
-        $(invalidMsg).empty();
+        invalidMsg.empty();
+
         getGeo(cityName);
         storeSearch(cityName);
         getSearch();
+
     } else {
         invalidMsgFunc();
     }
@@ -68,6 +71,7 @@ function getSearch() {
 }
 
 function getGeo(city) {
+
     var geoURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + ',' + countryCode + '&limit=5&appid=' + apiKey
     
     fetch(geoURL)
@@ -82,11 +86,14 @@ function getGeo(city) {
     });
 }; 
 
+
 function currentWeather(currentDay) {
     var cityName = cityInput.val();
     var kTemp = currentDay.main.temp
     var fTemp = Math.round((kTemp - 273.15) * 9/5 + 32)
+    var icon = currentDay.list.weather.icon;
 
+    iconEl.attr('src', icon);
     $('#city-name').text(cityName);
     $('#temp').text('Tempurature: ' + fTemp);
     $('#humidity').text('Humidity: ' + currentDay.main.humidity);
@@ -143,9 +150,7 @@ function fiveDay(list) {
 
 
 //LAST THINGS TO DO:
-// NEED TO ADD ICONS!!!!!!!!! FIRST AND FOREMOST
-// Fix history buttons
-// Add formatting to the 5 days
+// NEED TO ADD ICONS!!!!!!!!! 
 // Add commments
 // Do readme
 

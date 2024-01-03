@@ -6,3 +6,10 @@ header {
     background-image: linear-gradient(blue, darkblue);
     color: white;
 }
+
+#current-box, #five-day-box {
+    margin-top: 3%;
+    margin-bottom: auto;
+    margin-right: 3%;
+    border-style: solid;
+}
