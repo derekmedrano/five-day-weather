@@ -25,6 +25,7 @@ function storeSearch (cityName) {
 
 function getSearch() {
     var cities = JSON.parse(localStorage.getItem('cities')) || [];
+    $('#prev-searches').empty();
     for(var i = 0; i < cities.length; i++) {
         var searches = cities[i];
         var prevSearchesBtn = $('<button></button>');
@@ -67,26 +68,28 @@ function currentWeather(currentDay) {
 }
 
 function fiveDay(list) {
- for(var i = 7; i < list.length; i += 8) {
-    var day = list[i];
-    var card = $('<div></div>')
-    var date = $('<p></p>');
-    var temp = $('<p></p>');
-    var humidity = $('<p></p>');
-    var wind = $('<p></p>');
+    $('#five-day').empty()
 
-    var kTemp = day.main.temp
-    var fTemp = Math.round((kTemp - 273.15) * 9/5 + 32);
-    
-    
-    date.text(dayjs.unix(day.dt).format("MM-DD-YYYY"));
-    temp.text(fTemp);
-    humidity.text(day.main.humidity);
-    wind.text(day.wind.speed);
-    $(card).append(date);
-    $(card).append(temp);
-    $(card).append(humidity);
-    $(card).append(wind);
+    for(var i = 7; i < list.length; i += 8) {
+        var day = list[i];
+        var card = $('<div></div>')
+        var date = $('<p></p>');
+        var temp = $('<p></p>');
+        var humidity = $('<p></p>');
+        var wind = $('<p></p>');
+
+        var kTemp = day.main.temp
+        var fTemp = Math.round((kTemp - 273.15) * 9/5 + 32);
+        
+        
+        date.text(dayjs.unix(day.dt).format("MM-DD-YYYY"));
+        temp.text(fTemp);
+        humidity.text(day.main.humidity);
+        wind.text(day.wind.speed);
+        $(card).append(date);
+        $(card).append(temp);
+        $(card).append(humidity);
+        $(card).append(wind);
 
     
 
@@ -94,3 +97,8 @@ function fiveDay(list) {
     $('#five-day').append(card);
  }
 }
+
+
+
+//LAST THINGS TO DO:
+// NEED TO ADD ICONS!!!!!!!!! FIRST AND FOREMOSR
