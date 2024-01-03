@@ -125,9 +125,11 @@ function fiveDay(list) {
         var iconCode = day.weather[0].icon
         var iconURL = 'http://openweathermap.org/img/w/' + iconCode + '.png';
 
+        //Cards are created inside of this div
         var card = $('<div></div>');
         card.addClass('card-body');
 
+        //The content will be added to the cards here
         var icon = $('<img>');
         icon.attr('src', iconURL);
 
@@ -162,7 +164,7 @@ function fiveDay(list) {
 
     
 
-
+    //and finally the content is appended to the 'card' div
     fiveDayDiv.append(card);
     
  }
