@@ -5,6 +5,7 @@ Users can use the application to search for a city in the US and view weather da
 as well as the next 5 days. Upon search, a button will be created in the aside so the user may easily go back and view
 a previously searched city.
 
+Try it out here! https://derekmedrano.github.io/weather-dashboard/
 ## Installation
 N/A
 
