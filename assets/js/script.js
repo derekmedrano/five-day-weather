@@ -86,24 +86,6 @@ function getGeo(city) {
     });
 }; 
 
-function getGeo(city) {
-
-    var geoURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + ',' + countryCode + '&limit=5&appid=' + apiKey
-    
-    fetch(geoURL)
-        .then(function (response) {
-        return response.json();
-    })
-    .then(function(data) {
-        console.log(data);
-        currentWeather(data.list[0]);
-        fiveDay(data.list);
-
-    });
-}; 
-
-
-
 
 function currentWeather(currentDay) {
     var cityName = cityInput.val();

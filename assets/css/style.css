@@ -13,3 +13,8 @@ header {
     margin-right: 3%;
     border-style: solid;
 }
+
+.card {
+    background-color: blue;
+    color: white;
+}
