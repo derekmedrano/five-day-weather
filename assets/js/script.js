@@ -32,9 +32,16 @@ function getSearch() {
 
         prevSearchesBtn.text(searches);
         prevSearchesBtn.addClass('row btn btn-secondary w-75 m-3');
+        $(prevSearchesBtn.on('click', function(event) {
+            event.preventDefault();
+            
+            getGeo(searches);
 
+        }));
 
         $('#prev-searches').append(prevSearchesBtn);
+
+        
 
     }
     
@@ -61,9 +68,9 @@ function currentWeather(currentDay) {
     var fTemp = Math.round((kTemp - 273.15) * 9/5 + 32)
 
     $('#city-name').text(cityName);
-    $('#temp').text('Tempurature:' + fTemp);
-    $('#humidity').text('Humidity:' + currentDay.main.humidity);
-    $('#wind').text('Wind:' + currentDay.wind.speed);
+    $('#temp').text('Tempurature: ' + fTemp);
+    $('#humidity').text('Humidity: ' + currentDay.main.humidity);
+    $('#wind').text('Wind: ' + currentDay.wind.speed);
 
 }
 
@@ -83,9 +90,9 @@ function fiveDay(list) {
         
         
         date.text(dayjs.unix(day.dt).format("MM-DD-YYYY"));
-        temp.text(fTemp);
-        humidity.text(day.main.humidity);
-        wind.text(day.wind.speed);
+        temp.text('Tempurature: ' + fTemp);
+        humidity.text('Humidity: ' + day.main.humidity);
+        wind.text('Wind: ' + day.wind.speed);
         $(card).append(date);
         $(card).append(temp);
         $(card).append(humidity);
@@ -101,4 +108,9 @@ function fiveDay(list) {
 
 
 //LAST THINGS TO DO:
-// NEED TO ADD ICONS!!!!!!!!! FIRST AND FOREMOSR
+// NEED TO ADD ICONS!!!!!!!!! FIRST AND FOREMOST
+// Fix history buttons
+// Add formatting to the 5 days
+// Add commments
+// Do readme
+
