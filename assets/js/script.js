@@ -3,6 +3,7 @@ var countryCode = 'US';
 
 var cityInput = $('#city');
 var searchBtn = $('#search-button');
+var invalidMsg = $('no-input-msg');
 
 
 $(searchBtn.on('click', function(event) {
@@ -34,7 +35,7 @@ function getSearch() {
         prevSearchesBtn.addClass('row btn btn-secondary w-75 m-3');
         $(prevSearchesBtn.on('click', function(event) {
             event.preventDefault();
-            var prevCity = prevSearchesBtn.val();
+            var prevCity = $(this).text()
             
             getGeo(prevCity);
 
