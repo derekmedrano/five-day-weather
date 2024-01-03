@@ -5,6 +5,7 @@ var cityInput = $('#city');
 var searchBtn = $('#search-button');
 var invalidMsg = $('#no-input-msg');
 var delHistoryBtn = $('#del-history');
+var iconEl = $('#cd-icon');
 
 function invalidMsgFunc() {
     var invalidMsgTxt = $('<p></p>')
@@ -85,12 +86,34 @@ function getGeo(city) {
     });
 }; 
 
+function getGeo(city) {
+
+    var geoURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + ',' + countryCode + '&limit=5&appid=' + apiKey
+    
+    fetch(geoURL)
+        .then(function (response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(data);
+        currentWeather(data.list[0]);
+        fiveDay(data.list);
+
+    });
+}; 
+
+
+
 
 function currentWeather(currentDay) {
     var cityName = cityInput.val();
     var kTemp = currentDay.main.temp
     var fTemp = Math.round((kTemp - 273.15) * 9/5 + 32)
 
+    var iconCode = currentDay.weather[0].icon;
+    var iconURL = 'http://openweathermap.org/img/w/' + iconCode + '.png';
+
+    iconEl.attr('src', iconURL)
     $('#city-name').text(cityName);
     $('#temp').text('Tempurature: ' + fTemp);
     $('#humidity').text('Humidity: ' + currentDay.main.humidity);
@@ -104,9 +127,15 @@ function fiveDay(list) {
 
     for(var i = 7; i < list.length; i += 8) {
         var day = list[i];
+        var iconCode = day.weather[0].icon
+        var iconURL = 'http://openweathermap.org/img/w/' + iconCode + '.png';
 
         var card = $('<div></div>');
         card.addClass('card-body');
+
+        var icon = $('<img>')
+        icon.attr('src', iconURL)
+
 
         var date = $('<p></p>');
         var temp = $('<p></p>');
@@ -130,7 +159,7 @@ function fiveDay(list) {
         wind.text('Wind: ' + day.wind.speed);
         wind.addClass('card-text');
 
-        
+        $(card).append(icon);
         $(card).append(date);
         $(card).append(temp);
         $(card).append(humidity);
