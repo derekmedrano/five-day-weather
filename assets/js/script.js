@@ -3,17 +3,35 @@ var countryCode = 'US';
 
 var cityInput = $('#city');
 var searchBtn = $('#search-button');
-var invalidMsg = $('no-input-msg');
+var invalidMsg = $('#no-input-msg');
+var delHistoryBtn = $('#del-history');
+
+function invalidMsgFunc() {
+    var invalidMsgTxt = $('<p></p>')
+    invalidMsgTxt.text('Please enter valid city.')
+    $(invalidMsg).append(invalidMsgTxt);
+}
 
 
 $(searchBtn.on('click', function(event) {
     event.preventDefault();
     var cityName = cityInput.val();
+    if (cityName !== ('')) {
+        $(invalidMsg).empty();
+        getGeo(cityName);
+        storeSearch(cityName);
+        getSearch();
+    } else {
+        invalidMsgFunc();
+    }
 
-    getGeo(cityName);
-    storeSearch(cityName);
-    getSearch();
+}));
 
+
+$(delHistoryBtn.on('click', function(event) {
+    event.preventDefault();
+    localStorage.setItem('cities', JSON.stringify([]));
+    $('#prev-searches').empty();
 }));
 
 function storeSearch (cityName) {
@@ -77,7 +95,8 @@ function currentWeather(currentDay) {
 }
 
 function fiveDay(list) {
-    $('#five-day').empty()
+    var fiveDayDiv = $('#five-day');
+    fiveDayDiv.empty();
 
     for(var i = 7; i < list.length; i += 8) {
         var day = list[i];
@@ -87,7 +106,7 @@ function fiveDay(list) {
         var humidity = $('<p></p>');
         var wind = $('<p></p>');
 
-        var kTemp = day.main.temp
+        var kTemp = day.main.temp;
         var fTemp = Math.round((kTemp - 273.15) * 9/5 + 32);
         
         
@@ -103,7 +122,8 @@ function fiveDay(list) {
     
 
 
-    $('#five-day').append(card);
+    fiveDayDiv.append(card);
+    
  }
 }
 
