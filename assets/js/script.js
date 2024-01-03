@@ -100,7 +100,10 @@ function fiveDay(list) {
 
     for(var i = 7; i < list.length; i += 8) {
         var day = list[i];
-        var card = $('<div></div>')
+
+        var card = $('<div></div>');
+        card.addClass('card-body');
+
         var date = $('<p></p>');
         var temp = $('<p></p>');
         var humidity = $('<p></p>');
@@ -111,9 +114,19 @@ function fiveDay(list) {
         
         
         date.text(dayjs.unix(day.dt).format("MM-DD-YYYY"));
+        date.addClass('card-title');
+
         temp.text('Tempurature: ' + fTemp);
+        temp.addClass('card-text');
+
+
         humidity.text('Humidity: ' + day.main.humidity);
+        humidity.addClass('card-text');
+
         wind.text('Wind: ' + day.wind.speed);
+        wind.addClass('card-text');
+
+        
         $(card).append(date);
         $(card).append(temp);
         $(card).append(humidity);
