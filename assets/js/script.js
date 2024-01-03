@@ -5,7 +5,6 @@ var cityInput = $('#city');
 var searchBtn = $('#search-button');
 var invalidMsg = $('#no-input-msg');
 var delHistoryBtn = $('#del-history');
-var iconEl = $('#w-icon');
 
 function invalidMsgFunc() {
     var invalidMsgTxt = $('<p></p>')
@@ -91,9 +90,7 @@ function currentWeather(currentDay) {
     var cityName = cityInput.val();
     var kTemp = currentDay.main.temp
     var fTemp = Math.round((kTemp - 273.15) * 9/5 + 32)
-    var icon = currentDay.list.weather.icon;
 
-    iconEl.attr('src', icon);
     $('#city-name').text(cityName);
     $('#temp').text('Tempurature: ' + fTemp);
     $('#humidity').text('Humidity: ' + currentDay.main.humidity);
