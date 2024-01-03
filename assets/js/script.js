@@ -9,9 +9,9 @@ $(searchBtn.on('click', function(event) {
     event.preventDefault();
     var cityName = cityInput.val();
 
-    console.log(cityName)
     getGeo(cityName);
     storeSearch(cityName);
+    getSearch();
 
 }));
 
@@ -23,13 +23,25 @@ function storeSearch (cityName) {
     }
 }
 
-function getSearch(cityName) {
+function getSearch() {
+    var cities = JSON.parse(localStorage.getItem('cities')) || [];
+    for(var i = 0; i < cities.length; i++) {
+        var searches = cities[i];
+        var prevSearchesBtn = $('<button></button>');
+
+        prevSearchesBtn.text(searches);
+        prevSearchesBtn.addClass('row btn btn-secondary w-75 m-3');
+
+
+        $('#prev-searches').append(prevSearchesBtn);
+
+    }
     
 }
 
 function getGeo(city) {
     var geoURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + ',' + countryCode + '&limit=5&appid=' + apiKey
-    console.log(city);
+    
     fetch(geoURL)
         .then(function (response) {
         return response.json();
@@ -55,7 +67,7 @@ function currentWeather(currentDay) {
 }
 
 function fiveDay(list) {
- for(var i = 7; i < list.length; i+=8) {
+ for(var i = 7; i < list.length; i += 8) {
     var day = list[i];
     var card = $('<div></div>')
     var date = $('<p></p>');
