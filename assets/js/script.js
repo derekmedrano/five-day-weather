@@ -95,7 +95,7 @@ function currentWeather(currentDay) {
     var iconCode = currentDay.weather[0].icon;
     var iconURL = 'http://openweathermap.org/img/w/' + iconCode + '.png';
 
-    iconEl.attr('src', iconURL)
+    iconEl.attr('src', iconURL);
     $('#city-name').text(cityName);
     $('#temp').text('Tempurature: ' + fTemp);
     $('#humidity').text('Humidity: ' + currentDay.main.humidity);
@@ -115,8 +115,8 @@ function fiveDay(list) {
         var card = $('<div></div>');
         card.addClass('card-body');
 
-        var icon = $('<img>')
-        icon.attr('src', iconURL)
+        var icon = $('<img>');
+        icon.attr('src', iconURL);
 
 
         var date = $('<p></p>');
@@ -155,10 +155,4 @@ function fiveDay(list) {
  }
 }
 
-
-
-//LAST THINGS TO DO:
-// NEED TO ADD ICONS!!!!!!!!! 
-// Add commments
-// Do readme
 
