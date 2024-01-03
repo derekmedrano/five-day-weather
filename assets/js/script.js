@@ -34,8 +34,9 @@ function getSearch() {
         prevSearchesBtn.addClass('row btn btn-secondary w-75 m-3');
         $(prevSearchesBtn.on('click', function(event) {
             event.preventDefault();
+            var prevCity = prevSearchesBtn.val();
             
-            getGeo(searches);
+            getGeo(prevCity);
 
         }));
 
