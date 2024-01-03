@@ -97,9 +97,9 @@ function currentWeather(currentDay) {
 
     iconEl.attr('src', iconURL);
     $('#city-name').text(cityName);
-    $('#temp').text('Tempurature: ' + fTemp);
-    $('#humidity').text('Humidity: ' + currentDay.main.humidity);
-    $('#wind').text('Wind: ' + currentDay.wind.speed);
+    $('#temp').text('Tempurature: ' + fTemp + 'F');
+    $('#humidity').text('Humidity: ' + currentDay.main.humidity + '%');
+    $('#wind').text('Wind: ' + currentDay.wind.speed + ' MPH');
 
 }
 
@@ -131,14 +131,14 @@ function fiveDay(list) {
         date.text(dayjs.unix(day.dt).format("MM-DD-YYYY"));
         date.addClass('card-title');
 
-        temp.text('Tempurature: ' + fTemp);
+        temp.text('Tempurature: ' + fTemp + 'F');
         temp.addClass('card-text');
 
 
-        humidity.text('Humidity: ' + day.main.humidity);
+        humidity.text('Humidity: ' + day.main.humidity + '%');
         humidity.addClass('card-text');
 
-        wind.text('Wind: ' + day.wind.speed);
+        wind.text('Wind: ' + day.wind.speed + " MPH");
         wind.addClass('card-text');
 
         $(card).append(icon);
